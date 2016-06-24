@@ -39,22 +39,21 @@ int main(int argc,char* argv[]){
                         cout<<"Ingrese su frase que desea desencriptar, no se aceptan Caracteres especiales, numeros ni letras en mayuscula"<<endl;
                         string input;
                         getline(cin,input);
-                        char* encrypt=new char[input.length()+1];
-                        strcpy(encrypt,input.c_str());
+                        char* dencrypt=new char[input.length()+1];
+                        strcpy(dencrypt,input.c_str());
                         for(int i=0;i<input.length();i++){
-                                int code=encrypt[i];
+                                int code=dencrypt[i];
                                 if(code!=32){
-                                        if(code>=120){
+                                        if(code<=99){
                                                 code+=23;
                                         }else{
                                                 code-=3;
                                         }
                                 }
-                                encrypt[i]=code;
-
+                                dencrypt[i]=code;
                         }
-                        cout<<"La frase encriptada es: "<<encrypt<<endl;
-			delete[] encrypt;
+                        cout<<"La frase encriptada es: "<<dencrypt<<endl;
+			delete[] dencrypt;
 		}else if(opcion==3){
 			bool valido=false;
 			long int tarjeta;
@@ -101,7 +100,7 @@ int main(int argc,char* argv[]){
 int menu(){
 	int rValue;
 	while(true){
-		cout<<"1.- Encriptar string\n2.- Desencriptar String\n3.- Luhn\n4.- Salir\n"<<endl;
+		cout<<"1.- Encriptar frase\n2.- Desencriptar frase\n3.- Verificar tarjeta\n4.- Salir\n"<<endl;
 		cin>>rValue;
 		if(rValue==1||rValue==2||rValue==3){
 			return rValue;
